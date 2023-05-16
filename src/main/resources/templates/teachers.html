@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymleaf.org" >
+<head>
+
+    <meta charset="UTF-8">
+    <title>inspection</title>
+    <link rel="stylesheet" href="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body th:style=" ' background-image: url(/background-page.png) ' ">
+<h4><a href="/">Home</a></h4>
+
+<center>
+    <div class="container-fluid text-center">
+        <h1>TEACHER'S IMIHIGO INSPECTION SYSTEM </h1>
+
+    </div>
+
+    <div class="m-2"> <a class="h3" th:href="@{/teachers/new}" >Add new Teacher </a>
+        <div th:if="${message}" class="alert-success text-center">
+            [[${message}]]
+        </div>
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>    ATTENDANCE RATE % </th>
+                <th>    EMAIL  ADDRESS  </th>
+                <th>    FULL NAME </th>
+                <th>    GRADUATION RATE %</th>
+                <th>    LECTURER SATISFACTIORY % </th>
+                <th>    STUDENT ACHIEVEMENT % </th>
+                <th>     </th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <th:block th:each="teacher : ${listTeachers}">
+
+                <tr>
+
+                    <td>[[${teacher.attendance_rate}]]</td>
+                    <td>[[${teacher.email}]]</td>
+                    <td>[[${teacher.fullname}]]</td>
+                    <td>[[${teacher.graduation_rate}]]</td>
+                    <td>[[${teacher.lecturer_satisfactory}]]</td>
+                    <td>[[${teacher.students_achievement}]]</td>
+
+                    <td>
+                        <a class="h6 mr-3" th:href="@{'/teachers/edit/' + ${teacher.id}}"  >Edit</a>
+                        <a class="h6 mr-3" th:href="@{'/teachers/delete/' + ${teacher.id}}">Delete</a>
+                    </td>
+                </tr>
+
+            </th:block>
+
+
+
+            </tbody>
+        </table>
+    </div>
+</center>
+
+
+</body>
+</html>
